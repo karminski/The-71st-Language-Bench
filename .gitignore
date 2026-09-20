@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+*.tsbuildinfo
+
+# Environment (keep .env.example)
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor
+.idea/
+*.swp
+*.swo
+*~
+
+# Test / coverage
+coverage/
+
+# Local editor history
+.specstory/
+
+# Local backups
+backup/
+
+# Downloaded sources and model outputs (completions can be sensitive)
+data/raw/
+data/runs/**/completions.jsonl
+data/runs/**/judgments.jsonl

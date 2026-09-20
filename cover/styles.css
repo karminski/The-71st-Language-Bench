@@ -1,0 +1,300 @@
+:root {
+  --ink: #ebe6db;
+  --ink-dim: #a29c90;
+  --ink-faint: #6d685f;
+  --paper: #202124;
+  --rule: rgba(235, 230, 219, 0.28);
+  --accent: #6fb7ff;
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --serif: "Source Serif 4", "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  color: var(--ink);
+  font-family: var(--serif);
+  background:
+    radial-gradient(120% 90% at 38% 42%, #2b2c31 0%, #22232a 46%, #191a1d 100%);
+}
+
+#stage,
+#labels {
+  position: fixed;
+  inset: 0;
+}
+
+#stage {
+  z-index: 0;
+  display: block;
+}
+
+#labels {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------------------- */
+/* Masthead, like the magazine page: section | chart title | deck            */
+/* ------------------------------------------------------------------------- */
+
+.masthead,
+.footer,
+.lang-switch {
+  position: fixed;
+  z-index: 3;
+}
+
+.masthead {
+  top: 30px;
+  left: 40px;
+  right: 40px;
+  display: grid;
+  grid-template-columns: minmax(180px, 1.1fr) minmax(200px, 1fr) minmax(260px, 1.5fr);
+  gap: 36px;
+  align-items: start;
+  pointer-events: none;
+}
+
+.mast-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.rule {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: var(--ink);
+}
+
+.kicker {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.kicker.accent {
+  color: var(--accent);
+}
+
+.mast-title {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 0.9;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.deck {
+  margin: 0;
+  padding-right: 210px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-dim);
+}
+
+.deck strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------------------- */
+/* Language switch                                                            */
+/* ------------------------------------------------------------------------- */
+
+.lang-switch {
+  top: 30px;
+  right: 40px;
+  display: flex;
+  border: 1px solid var(--rule);
+}
+
+.lang-switch button {
+  appearance: none;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-dim);
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 6px 11px;
+  cursor: pointer;
+}
+
+.lang-switch button:last-child {
+  border-right: 0;
+}
+
+.lang-switch button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ------------------------------------------------------------------------- */
+/* Footer                                                                     */
+/* ------------------------------------------------------------------------- */
+
+.footer {
+  left: 40px;
+  right: 40px;
+  bottom: 22px;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.note {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
+
+.note strong {
+  color: var(--ink-dim);
+  font-weight: 600;
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: 10.5px;
+}
+
+.footer-bar {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--serif);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.footer-bar .sep {
+  margin: 0 8px;
+  color: var(--ink-faint);
+}
+
+.footer-bar .credit {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+/* ------------------------------------------------------------------------- */
+/* 3D-anchored labels. `.tag-wrap` is a zero-size point placed by            */
+/* CSS2DRenderer; `.tag` is rotated along the projected X axis by scene.js.  */
+/* ------------------------------------------------------------------------- */
+
+.tag-wrap {
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.tag {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  transform-origin: 0 0;
+  white-space: nowrap;
+  user-select: none;
+  will-change: transform;
+  transition: opacity 0.25s ease;
+}
+
+.tag.end {
+  padding-right: 6px;
+}
+
+.tag.start {
+  padding-left: 6px;
+}
+
+.tag-cat {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d6d0c3;
+}
+
+.tag-pct {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  color: #e7e1d5;
+  text-shadow:
+    0 0 2px rgba(20, 20, 22, 0.9),
+    0 0 6px rgba(20, 20, 22, 0.6);
+}
+
+/* Printed in ink on the bright top face of the plateau. */
+.tag-pct.ds {
+  font-size: 10px;
+  font-weight: 500;
+  color: #1f1b18;
+  text-shadow: none;
+  padding-left: 0;
+}
+
+.tag-pct.fable {
+  font-size: 9px;
+}
+
+@media (max-width: 960px) {
+  .masthead {
+    grid-template-columns: 1fr 1fr;
+    right: 170px;
+  }
+
+  .deck {
+    display: none;
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "the-71st-language-bench",
+  "version": "0.1.0",
+  "description": "Cross-lingual LLM moderation bench for English, Chinese, and Hebrew",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "bench": "tsx src/cli.ts",
+    "prepare-data": "tsx src/cli.ts prepare",
+    "translate": "tsx src/cli.ts translate",
+    "run": "tsx src/cli.ts run",
+    "judge": "tsx src/cli.ts judge",
+    "report": "tsx src/cli.ts report",
+    "test": "tsx --test src/lib/sample.test.ts src/lib/metrics.test.ts src/lib/judge-parse.test.ts src/lib/translation-qc.test.ts src/lib/language.test.ts src/lib/datasets.test.ts src/lib/report.test.ts src/lib/run.test.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "csv-parse": "^5.6.0",
+    "dotenv": "^16.6.1",
+    "openai": "^4.104.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "js-tiktoken": "^1.0.21",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}

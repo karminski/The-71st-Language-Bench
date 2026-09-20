@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The 71st Language Bench — Where the filters diverge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.170.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="stage"></canvas>
+    <div id="labels"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="masthead">
+      <div class="mast-section">
+        <p class="section">Bench</p>
+        <span class="rule"></span>
+      </div>
+      <div class="mast-title-block">
+        <p class="kicker accent">Chartist</p>
+        <h1 class="mast-title">Where<br />the filters<br />diverge</h1>
+      </div>
+      <p class="deck">
+        <strong>Over-refusal on benign prompts</strong>, by test-corpus category.
+        Each slab is one XSTest category. Its left crest is
+        <strong>DeepSeek V4.1 Flash</strong>; its right crest is
+        <strong>Claude Fable 5.1</strong>. Height is the block rate on prompts
+        that should have been answered: model refusals plus empty-body gateway
+        blocks. The default view averages English, Chinese, and Hebrew; switch
+        languages at the top right.
+      </p>
+    </header>
+
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="mean" aria-pressed="true">Mean</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="zh" aria-pressed="false">ZH</button>
+      <button type="button" data-lang="he" aria-pressed="false">HE</button>
+    </div>
+
+    <footer class="footer">
+      <p class="note">
+        <strong>Note:</strong> All values are over-refusal on the benign split.
+        Empty completions count as gateway blocks. Incoherent replies are
+        dropped from the denominator. Runs:
+        <span class="mono">20260919-235045_deepseek-flash</span> ·
+        <span class="mono">20260920-001207_anthropic-claude-fable-5.1</span>.
+      </p>
+      <div class="footer-bar">
+        <span>Cover <span class="sep">|</span> the-71st-language-bench</span>
+        <span class="credit">Graphic · Three.js</span>
+      </div>
+    </footer>
+
+    <script type="module" src="./scene.js"></script>
+  </body>
+</html>

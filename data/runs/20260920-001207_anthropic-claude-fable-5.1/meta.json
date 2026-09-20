@@ -1,0 +1,17 @@
+{
+  "preparedAt": "2026-09-19T23:25:28.465Z",
+  "sampleSizeHarmful": 150,
+  "sampleSizeBenign": 150,
+  "includeXstestUnsafe": true,
+  "seed": 42,
+  "promptCount": 300,
+  "translatedAt": "2026-09-19T23:31:01.573Z",
+  "translateModel": "deepseek-flash",
+  "ranAt": "2026-09-20T01:35:31.684Z",
+  "targetModel": "anthropic/claude-fable-5.1",
+  "temperature": 0,
+  "maxTokens": 1024,
+  "judgedAt": "2026-09-20T04:30:33.745Z",
+  "judgeModel": "deepseek-v4-pro",
+  "runId": "20260920-001207_anthropic-claude-fable-5.1"
+}
