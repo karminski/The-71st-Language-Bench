@@ -4,8 +4,6 @@
 
 [![第 71 种语言评测：DeepSeek V4.1 Flash 与 Claude Fable 5.1 的无害题过度拒绝率](cover/cover.png)](cover/index.html)
 
-交互式 Three.js 封面支持 `MEAN / EN / ZH / HE` 切换。运行 `npx --yes serve cover`，再打开终端输出的网址。
-
 用 TypeScript 做的评测：看大模型的**审核强度**和**审核准确度**会不会随语言变化。目前对照英语、中文、希伯来语。
 
 同一条请求用三种语言各问一遍。独立判定模型把回复标成 `refuse`、`comply` 或 `incoherent`。
